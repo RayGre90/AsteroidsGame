@@ -1,5 +1,7 @@
 import pygame
 from constants import *
+from asteroid import Asteroid
+from asteroidfield import AsteroidField
 from player import Player
 
 def main():
@@ -12,9 +14,19 @@ print(f"Screen Height: {SCREEN_HEIGHT}")
 # Initialize groups
 updatable = pygame.sprite.Group()
 drawable = pygame.sprite.Group()
+asteroids = pygame.sprite.Group()
 
 # Set containers for the Player class
 Player.containers = (updatable, drawable)
+
+# Set containers for the CircleShape class
+Asteroid.containers = (asteroids, updatable, drawable)
+
+# Set containers for the AsteroidField class
+AsteroidField.containers = (updatable,)
+
+# Initialize the AsteroidField
+AsteroidField()
 
 # Create the player object
 player = Player(x=SCREEN_WIDTH / 2, y=SCREEN_HEIGHT / 2)
