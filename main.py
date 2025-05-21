@@ -45,7 +45,13 @@ while True:
     for sprite in drawable:   
         sprite.draw(screen)  # Draw the player
     pygame.display.flip()  # Update the display
-  
+
+    for asteroid in asteroids:
+        if player.collision(asteroid):
+            print("Game Over")
+            import sys
+            sys.exit()
+
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             pygame.quit()
